@@ -1,0 +1,42 @@
+package com.example.latbaru
+
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.latbaru.adapter.BukuAdapter
+import com.example.latbaru.model.ModelBuku
+
+class RecycleViewAtcivity1 : AppCompatActivity() {
+    private lateinit var rev_data : RecyclerView
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_recycle_view1)
+
+        rev_data = findViewById(R.id.rv_data)
+
+        val listBuku = listOf(
+            ModelBuku(judul = "hujan", penulis = "supriadi"),
+            ModelBuku(judul = "Bumi", penulis = "terbit"),
+            ModelBuku(judul = "Laskar Pelangi", penulis = "Andrea Hirata"),
+            ModelBuku(judul = "kawatachi", penulis = "senziro"),
+            ModelBuku(judul = "habis gelap terbit lah terang", penulis = "R.A Karini"),
+            ModelBuku(judul = "daun yg jatuh tak menghianati angin", penulis = "Lembah sunyi diantara rasa"),
+            ModelBuku(judul = "laksana bukan di pagi hari", penulis = "jejakrasa"),
+            ModelBuku(judul = "dera luka diantara manusia", penulis = "Manusia"),
+            ModelBuku(judul = "Makan tak harus nasi", penulis = "pergi riuh"),
+            ModelBuku(judul = "Manis tak harus pahit", penulis = "Yukino"),
+        )
+
+        val nBukuAdapter = BukuAdapter(listBuku)
+        rev_data.apply {
+            layoutManager = LinearLayoutManager(this@RecycleViewAtcivity1)
+            adapter = nBukuAdapter
+        }
+       
+        }
+    }
